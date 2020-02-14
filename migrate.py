@@ -13,7 +13,7 @@ from npsp import RDO, Contact, SalesforceConfig, SalesforceConnection
 env = Env()
 env.read_env()
 
-#stripe.api_key = env("STRIPE_KEY")
+# stripe.api_key = env("STRIPE_KEY")
 
 sf_config = SalesforceConfig(
     client_id=env("SALESFORCE_CLIENT_ID"),
@@ -27,18 +27,18 @@ sf_connection = SalesforceConnection(config=sf_config)
 
 interval_map = {"year": "yearly", "month": "monthly"}
 
-### Process the CSV 
+### Process the CSV
 
 with open("subscriptions.csv") as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         print(f"processing record for {row['email']} (${row['amount']} each {row['interval']})...")
 
-        #print(f"canceling the Stripe subscription {row['subscription_id']}...")
-        #stripe.Subscription.delete(row['subscription_id'])
+        # print(f"canceling the Stripe subscription {row['subscription_id']}...")
+        # stripe.Subscription.delete(row['subscription_id'])
 
         # check for dupe
-        if (rdo := RDO.get(stripe_customer_id=row['customer_id'], sf_connection=sf_connection)) is not None:
+        if (RDO.get(stripe_customer_id=row["customer_id"], sf_connection=sf_connection)) is not None:
             print("Exiting; WARNING: duplicate!")
             sys.exit(-1)
 

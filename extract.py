@@ -15,7 +15,7 @@ env.read_env()
 stripe.api_key = env("STRIPE_KEY")
 
 
-fieldnames = ['customer_id', 'email', 'amount', 'interval', 'current_period_end', 'subscription_id', 'plan_name']
+fieldnames = ["customer_id", "email", "amount", "interval", "current_period_end", "subscription_id", "plan_name"]
 
 with open("subscriptions.csv", "w") as csvfile:
     csv_writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -29,16 +29,16 @@ with open("subscriptions.csv", "w") as csvfile:
         subscription = subscription.to_dict()
 
         customer_id = subscription["customer"]
-        csv_record['customer_id'] = customer_id
+        csv_record["customer_id"] = customer_id
 
-        csv_record['email'] = stripe.Customer.retrieve(customer_id).email
-        csv_record['amount'] = subscription['quantity'] * subscription["plan"]["amount"] / 100
-        csv_record['interval'] = subscription["plan"]["interval"]
+        csv_record["email"] = stripe.Customer.retrieve(customer_id).email
+        csv_record["amount"] = subscription["quantity"] * subscription["plan"]["amount"] / 100
+        csv_record["interval"] = subscription["plan"]["interval"]
 
         current_period_end = subscription["current_period_end"]
-        csv_record['current_period_end'] = datetime.fromtimestamp(current_period_end)
+        csv_record["current_period_end"] = datetime.fromtimestamp(current_period_end)
 
-        csv_record['subscription_id'] = subscription["id"]
-        csv_record['plan_name'] = subscription["plan"]["name"]
+        csv_record["subscription_id"] = subscription["id"]
+        csv_record["plan_name"] = subscription["plan"]["name"]
 
         csv_writer.writerow(csv_record)

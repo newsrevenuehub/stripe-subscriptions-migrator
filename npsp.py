@@ -30,7 +30,6 @@ logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
 
-
 class SalesforceException(Exception):
     def __init__(self, msg):
         super().__init__(msg)
@@ -715,7 +714,6 @@ class RDO(SalesforceObject):
         self.encouraged_by = None
         self.record_type_name = None
 
-
         self.next_payment_date = None
         self.name = None
 
@@ -753,7 +751,6 @@ class RDO(SalesforceObject):
             if len(response) > 1:
                 raise SalesforceException("More than one RDO found")
             response = response[0]
-
 
         rdo = cls(sf_connection=sf_connection)
         rdo.id_ = response["Id"]
@@ -849,7 +846,7 @@ class RDO(SalesforceObject):
             RecordType.Name, Type, LeadSource,
             Encouraged_to_contribute_by__c, Stripe_Transaction_ID__c,
             Stripe_Card__c, AccountId, npsp__Closed_Lost_Reason__c,
-            Expected_Giving_Date__c, 
+            Expected_Giving_Date__c,
             StageName,
             FROM Opportunity
             WHERE npe03__Recurring_Donation__c = '{self.id_}'
@@ -1136,7 +1133,7 @@ class Contact(SalesforceObject):
         if id_:
             query = f"""
                     SELECT Id, AccountId, FirstName, LastName, LeadSource, Stripe_Customer_ID__c, MailingPostalCode,
-                    npo02__OppAmountLastYear__c, 
+                    npo02__OppAmountLastYear__c,
                     Email, npe01__WorkEmail__c, MailingCity, MailingState, MailingStreet, MailingCountry
                     FROM Contact
                     WHERE id = '{id_}'
@@ -1163,12 +1160,12 @@ class Contact(SalesforceObject):
             return contact
 
         query = f"""
-                SELECT Id, AccountId, FirstName, LastName, LeadSource, MailingPostalCode, 
-                npo02__OppAmountLastYear__c, 
-                Concatenated_Emails__c, Email, npe01__WorkEmail__c, 
-                MailingCity, MailingState, MailingStreet, MailingCountry 
+                SELECT Id, AccountId, FirstName, LastName, LeadSource, MailingPostalCode,
+                npo02__OppAmountLastYear__c,
+                Concatenated_Emails__c, Email, npe01__WorkEmail__c,
+                MailingCity, MailingState, MailingStreet, MailingCountry
                 FROM Contact
-                WHERE Concatenated_Emails__c 
+                WHERE Concatenated_Emails__c
                 LIKE '%{email}%'
                 """
 
@@ -1313,15 +1310,7 @@ class Campaign(SalesforceObject):
 
     api_name = "Campaign"
 
-    def __init__(
-        self,
-        sf_connection,
-        type_="Event",
-        status="Planned",
-        name=None,
-        record_type_name="Event",
-        start_date=None,
-    ):
+    def __init__(self, sf_connection, type_="Event", status="Planned", name=None, record_type_name="Event", start_date=None):
         super().__init__(sf_connection)
         self.name = name
         self.start_date = start_date
@@ -1419,12 +1408,7 @@ class CampaignMember(SalesforceObject):
         campaign_id = response[0]["CampaignId"]
         status = response[0]["Status"]
 
-        campaign_member = CampaignMember(
-            sf_connection=sf_connection,
-            contact_id=contact_id,
-            campaign_id=campaign_id,
-            status=status,
-        )
+        campaign_member = CampaignMember(sf_connection=sf_connection, contact_id=contact_id, campaign_id=campaign_id, status=status)
         campaign_member.id_ = response[0]["Id"]
         return campaign_member
 
@@ -1433,12 +1417,7 @@ class CampaignMember(SalesforceObject):
         campaign_member = cls.get(sf_connection=sf_connection, contact_id=contact_id, campaign_id=campaign_id)
         if campaign_member:
             return campaign_member
-        campaign_member = CampaignMember(
-            sf_connection=sf_connection,
-            contact_id=contact_id,
-            status=status,
-            campaign_id=campaign_id,
-        )
+        campaign_member = CampaignMember(sf_connection=sf_connection, contact_id=contact_id, status=status, campaign_id=campaign_id)
         campaign_member.save()
         return campaign_member
 
@@ -1464,11 +1443,7 @@ class CampaignMember(SalesforceObject):
             self.sf.save(self)
 
     def _format(self) -> dict:
-        return {
-            "ContactId": self.contact_id,
-            "Status": self.status,
-            "CampaignId": self.campaign_id,
-        }
+        return {"ContactId": self.contact_id, "Status": self.status, "CampaignId": self.campaign_id}
 
 
 def single_option_given(iterable):

@@ -4,6 +4,9 @@ version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
 
+[tool.black]
+line-length = 140
+
 [tool.poetry.dependencies]
 python = "^3.8"
 stripe = "^2.42.0"
