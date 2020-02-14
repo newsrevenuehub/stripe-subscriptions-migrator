@@ -18,7 +18,7 @@ Then run `make`. This will drop you into a shell in the Docker container.
 
 It's run as two scripts for safety. The first (`extract.py`) captures all of the subscriptions and saves them to a CSV. You can review that CSV to make sure it has exactly what you were hoping to get out of Stripe. So run `python extract.py`. That will produce a file called `subscriptions.csv`. Each time you run the script it will overwrite that CSV.
 
-Once you're happy with the contents of the CSV you can run the migraiotn script (`python migrate.py`).
+Once you're happy with the contents of the CSV you can run the migration script (`python migrate.py`).
 
 The `migrate.py` script will process each record of the CSV by first canceling the subscription and then entering it into Salesforce. It tries to avoid entering duplicates by checking for an existing Salesforce record with the same Stripe Customer ID. There could be legitimate reasons why someone would have more than one recurring donation with the same Stripe Customer ID. In that case this script would break and would need to be modified to properly process the records.
 
