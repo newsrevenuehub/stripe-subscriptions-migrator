@@ -39,6 +39,6 @@ with open("subscriptions.csv", "w") as csvfile:
         csv_record["current_period_end"] = datetime.fromtimestamp(current_period_end)
 
         csv_record["subscription_id"] = subscription["id"]
-        csv_record["plan_name"] = subscription["plan"]["name"]
+        csv_record["plan_name"] = subscription["plan"].get("name", None) or subscription["plan"].get("nickname", None) or ""
 
         csv_writer.writerow(csv_record)
