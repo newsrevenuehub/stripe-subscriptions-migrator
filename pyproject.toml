@@ -9,17 +9,18 @@ line-length = 140
 
 [tool.poetry.dependencies]
 python = "^3.8"
-stripe = "^2.42.0"
-environs = "^7.2.0"
-pytz = "^2019.3"
-fuzzywuzzy = "^0.17.0"
-pydantic = "^1.4"
-arrow = "^0.15.5"
+stripe = "^2"
+environs = "^7"
+pytz = "*"
+fuzzywuzzy = "*"
+pydantic = "*"
+arrow = "*"
+python-Levenshtein = "*"
 
 [tool.poetry.dev-dependencies]
-ipdb = "^0.12.3"
+ipdb = "*"
 black = "^19.10b0"
-pre-commit = "^2.0.1"
+pre-commit = "*"
 
 [build-system]
 requires = ["poetry>=0.12"]
