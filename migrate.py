@@ -32,6 +32,7 @@ sf_config = SalesforceConfig(
     api_version=env("SALESFORCE_API_VERSION"),
 )
 sf_connection = SalesforceConnection(config=sf_config)
+sf_connection.test_connection()
 
 interval_map = {"year": "yearly", "month": "monthly"}
 
