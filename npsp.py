@@ -98,6 +98,9 @@ class SalesforceConnection:
             self._get_token()
         return self._instance_url
 
+    def test_connection(self):
+        self.instance_url
+
     @staticmethod
     def check_response(response=None, expected_statuses: list = None) -> bool:
         """
