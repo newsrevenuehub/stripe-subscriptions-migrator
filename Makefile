@@ -1,6 +1,6 @@
 pull-and-run-image:
-	docker pull docker.pkg.github.com/newsrevenuehub/stripe-subscriptions-migrator/stripe-subscriptions-migrator:v0.9.3
-	docker tag docker.pkg.github.com/newsrevenuehub/stripe-subscriptions-migrator/stripe-subscriptions-migrator:v0.9.3 stripe-subscriptions-migrator
+	docker pull docker.pkg.github.com/newsrevenuehub/stripe-subscriptions-migrator/stripe-subscriptions-migrator:v0.9.4
+	docker tag docker.pkg.github.com/newsrevenuehub/stripe-subscriptions-migrator/stripe-subscriptions-migrator:v0.9.4 stripe-subscriptions-migrator
 	docker-compose run stripe-subscriptions-migrator
 
 build:
@@ -8,8 +8,8 @@ build:
 	docker-compose run stripe-subscriptions-migrator
 
 push:
-	docker tag stripe-subscriptions-migrator docker.pkg.github.com/newsrevenuehub/stripe-subscriptions-migrator/stripe-subscriptions-migrator:v0.9.3
-	docker push docker.pkg.github.com/newsrevenuehub/stripe-subscriptions-migrator/stripe-subscriptions-migrator:v0.9.3
+	docker tag stripe-subscriptions-migrator docker.pkg.github.com/newsrevenuehub/stripe-subscriptions-migrator/stripe-subscriptions-migrator:v0.9.4
+	docker push docker.pkg.github.com/newsrevenuehub/stripe-subscriptions-migrator/stripe-subscriptions-migrator:v0.9.4
 
 
 build-with-cnb:
