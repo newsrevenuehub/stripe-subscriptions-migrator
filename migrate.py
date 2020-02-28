@@ -1,4 +1,5 @@
 import csv
+import logging
 import sys
 from datetime import datetime
 
@@ -9,6 +10,13 @@ from environs import Env
 from npsp import RDO, Contact, SalesforceConfig, SalesforceConnection
 
 ### Setup
+
+logger = logging.getLogger()
+logger.setLevel("INFO")
+formatter = logging.Formatter(fmt="%(levelname)s %(name)s/%(module)s:%(lineno)d - %(message)s")
+console = logging.StreamHandler()
+console.setFormatter(formatter)
+logger.addHandler(console)
 
 env = Env()
 env.read_env()
