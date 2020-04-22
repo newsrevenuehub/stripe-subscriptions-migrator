@@ -54,15 +54,15 @@ with open("subscriptions.csv") as csvfile:
             rdo_name = f"{now} for {contact.first_name} {contact.last_name}"
 
         rdo = RDO(contact=contact, sf_connection=sf_connection)
-        rdo.stripe_customer_id = row["customer_id"]
+        rdo.stripe_customer_id = row["customer_id"].strip()
         rdo.name = rdo_name
         rdo.description = f"{row['subscription_id']} ({row['plan_name']})"
         rdo.lead_source = "Stripe"
-        rdo.installment_period = interval_map[row["interval"]]
-        rdo.amount = row["amount"]
+        rdo.installment_period = interval_map[row["interval"].strip()]
+        rdo.amount = row["amount"].strip()
         rdo.open_ended_status = "Open"
 
-        current_period_end = arrow.get(row["current_period_end"])
+        current_period_end = arrow.get(row["current_period_end"].strip())
         rdo.date_established = current_period_end.strftime("%Y-%m-%d")
 
         rdo.save()
