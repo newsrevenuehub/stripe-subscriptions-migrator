@@ -64,5 +64,6 @@ with open("subscriptions.csv") as csvfile:
 
         current_period_end = arrow.get(row["current_period_end"].strip())
         rdo.date_established = current_period_end.strftime("%Y-%m-%d")
+        rdo.day_of_month = current_period_end.strftime("%-d")
 
         rdo.save()

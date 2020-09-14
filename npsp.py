@@ -716,6 +716,7 @@ class RDO(SalesforceObject):
         self.agreed_to_pay_fees = False
         self.encouraged_by = None
         self.record_type_name = None
+        self.day_of_month = None
 
         self.next_payment_date = None
         self.name = None
@@ -833,6 +834,17 @@ class RDO(SalesforceObject):
             "npe03__Installment_Period__c": self.installment_period,
             "Type__c": self.type_,
         }
+
+        # figure out if the system has enhanced recurring donations
+        query = "SELECT npsp__IsRecurringDonations2Enabled__c FROM npe03__Recurring_Donations_Settings__c"
+        response = self.sf.query(query)
+        enhanced = response[0]["npsp__IsRecurringDonations2Enabled__c"]
+
+        if enhanced:
+            logger.info(f"enhanced recurring donations")
+            recurring_donation["npsp__Day_of_Month__c"] = self.day_of_month
+            recurring_donation["npsp__InstallmentFrequency__c"] = 1
+
         return recurring_donation
 
     def __str__(self):
