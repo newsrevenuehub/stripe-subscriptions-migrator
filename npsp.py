@@ -844,6 +844,7 @@ class RDO(SalesforceObject):
             logger.info(f"enhanced recurring donations")
             recurring_donation["npsp__Day_of_Month__c"] = self.day_of_month
             recurring_donation["npsp__InstallmentFrequency__c"] = 1
+            recurring_donation["npsp__StartDate__c"] = self.date_established
 
         return recurring_donation
 
