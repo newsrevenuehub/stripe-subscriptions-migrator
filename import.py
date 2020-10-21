@@ -2,6 +2,7 @@ import csv
 import logging
 import sys
 from datetime import datetime
+import os.path
 
 import arrow
 import pytz
@@ -36,9 +37,17 @@ interval_map = {"year": "yearly", "month": "monthly"}
 ### Process the CSV
 
 with open("subscriptions.csv") as csvfile:
+    num_lines = sum(1 for line in csvfile)
+    csvfile.seek(0)
+    print(f"Processing file {os.path.realpath(csvfile.name)} with {num_lines} rows...")
+
     reader = csv.DictReader(csvfile)
+
     for row in reader:
+        print(f"{row['customer_id']}")
+
         print(f"processing record for {row['email']} (${row['amount']} each {row['interval']})...")
+        continue
 
         # check for dupe
         if (RDO.get(stripe_customer_id=row["customer_id"], sf_connection=sf_connection)) is not None:
