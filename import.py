@@ -44,10 +44,7 @@ with open("subscriptions.csv") as csvfile:
     reader = csv.DictReader(csvfile)
 
     for row in reader:
-        print(f"{row['customer_id']}")
-
         print(f"processing record for {row['email']} (${row['amount']} each {row['interval']})...")
-        continue
 
         # check for dupe
         if (RDO.get(stripe_customer_id=row["customer_id"], sf_connection=sf_connection)) is not None:
