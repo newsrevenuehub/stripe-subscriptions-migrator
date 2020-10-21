@@ -44,6 +44,7 @@ with open("subscriptions.csv") as csvfile:
     reader = csv.DictReader(csvfile)
 
     for row in reader:
+        print(f"{row}")
         print(f"{row['customer_id']}")
 
         print(f"processing record for {row['email']} (${row['amount']} each {row['interval']})...")
