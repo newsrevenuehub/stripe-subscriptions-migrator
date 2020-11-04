@@ -4,6 +4,7 @@ from datetime import datetime
 import pytz
 import stripe
 from environs import Env
+from config import FIELDNAMES
 
 ### Setup
 
@@ -14,11 +15,8 @@ env.read_env()
 
 stripe.api_key = env("STRIPE_KEY")
 
-
-fieldnames = ["customer_id", "email", "amount", "interval", "current_period_end", "subscription_id", "plan_name"]
-
 with open("subscriptions.csv", "w") as csvfile:
-    csv_writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+    csv_writer = csv.DictWriter(csvfile, fieldnames=FIELDNAMES)
     csv_writer.writeheader()
 
     csv_record = dict()

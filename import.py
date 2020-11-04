@@ -3,6 +3,7 @@ import logging
 import sys
 from datetime import datetime
 import os.path
+from config import FIELDNAMES
 
 import arrow
 import pytz
@@ -42,6 +43,7 @@ with open("subscriptions.csv") as csvfile:
     print(f"Processing file {os.path.realpath(csvfile.name)} with {num_lines} rows...")
 
     reader = csv.DictReader(csvfile)
+    assert set(reader.fieldnames) == set(FIELDNAMES)
 
     for row in reader:
         print(f"processing record for {row['email']} (${row['amount']} each {row['interval']})...")
