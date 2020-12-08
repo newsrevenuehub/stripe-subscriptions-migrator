@@ -1,7 +1,7 @@
+VERSION=v0.9.11
 pull-and-run-image:
-	docker login docker.pkg.github.com
-	docker pull docker.pkg.github.com/newsrevenuehub/stripe-subscriptions-migrator/stripe-subscriptions-migrator:v0.9.10
-	docker tag docker.pkg.github.com/newsrevenuehub/stripe-subscriptions-migrator/stripe-subscriptions-migrator:v0.9.10 stripe-subscriptions-migrator
+	docker pull ghcr.io/newsrevenuehub/stripe-subscriptions-migrator:${VERSION}
+	docker tag ghcr.io/newsrevenuehub/stripe-subscriptions-migrator:${VERSION} stripe-subscriptions-migrator
 	docker-compose run stripe-subscriptions-migrator
 
 build:
@@ -11,8 +11,8 @@ run: build
 	docker-compose run stripe-subscriptions-migrator
 
 push: build
-	docker tag stripe-subscriptions-migrator docker.pkg.github.com/newsrevenuehub/stripe-subscriptions-migrator/stripe-subscriptions-migrator:v0.9.10
-	docker push docker.pkg.github.com/newsrevenuehub/stripe-subscriptions-migrator/stripe-subscriptions-migrator:v0.9.10
+	docker tag stripe-subscriptions-migrator ghcr.io/newsrevenuehub/stripe-subscriptions-migrator:${VERSION}
+	docker push ghcr.io/newsrevenuehub/stripe-subscriptions-migrator:${VERSION}
 
 
 build-with-cnb:
