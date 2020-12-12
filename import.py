@@ -1,4 +1,5 @@
 import csv
+import stripe
 import logging
 import sys
 from datetime import datetime
@@ -35,7 +36,22 @@ sf_connection.test_connection()
 
 interval_map = {"year": "yearly", "month": "monthly"}
 
+stripe.api_key = env("STRIPE_KEY")
+
 ### Process the CSV
+
+
+def add_email_to_stripe(stripe_customer_id, email):
+    customer = stripe.Customer.retrieve(stripe_customer_id)
+    if not customer.email:
+        print(f"Stripe customer {stripe_customer_id} doesn't have email; adding")
+        stripe.Customer.modify(stripe_customer_id, email=email)
+        return
+
+    if customer.email != email:
+        print(f"Exiting; WARNING: Stripe customer email doesn't match: {email} vs. {customer.email}")
+        sys.exit(-1)
+
 
 with open("subscriptions.csv") as csvfile:
     num_lines = sum(1 for line in csvfile)
@@ -48,6 +64,7 @@ with open("subscriptions.csv") as csvfile:
     for row in reader:
         print(f"processing record for {row['email']} (${row['amount']} each {row['interval']})...")
 
+        add_email_to_stripe(row["customer_id"], row["email"])
         # check for dupe
         if (RDO.get(stripe_customer_id=row["customer_id"], sf_connection=sf_connection)) is not None:
             print("Exiting; WARNING: duplicate!")
