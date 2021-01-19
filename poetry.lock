@@ -380,7 +380,7 @@ cli = ["click (>=5.0)"]
 
 [[package]]
 name = "python-levenshtein"
-version = "0.12.0"
+version = "0.12.1"
 description = "Python extension for computing string edit distances and similarities."
 category = "main"
 optional = false
@@ -690,7 +690,7 @@ python-dotenv = [
     {file = "python_dotenv-0.11.0-py2.py3-none-any.whl", hash = "sha256:ca9f3debf2262170d6f46571ce4d6ca1add60bb93b69c3a29dcb3d1a00a65c93"},
 ]
 python-levenshtein = [
-    {file = "python-Levenshtein-0.12.0.tar.gz", hash = "sha256:033a11de5e3d19ea25c9302d11224e1a1898fe5abd23c61c7c360c25195e3eb1"},
+    {file = "python-Levenshtein-0.12.1.tar.gz", hash = "sha256:554e273a88060d177e7b3c1e6ea9158dde11563bfae8f7f661f73f47e5ff0911"},
 ]
 pytz = [
     {file = "pytz-2020.5-py2.py3-none-any.whl", hash = "sha256:16962c5fb8db4a8f63a26646d8886e9d769b6c511543557bc84e9569fb9a9cb4"},
