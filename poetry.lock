@@ -16,7 +16,7 @@ python-versions = "*"
 
 [[package]]
 name = "arrow"
-version = "1.0.2"
+version = "1.0.3"
 description = "Better dates & times for Python"
 category = "main"
 optional = false
@@ -543,8 +543,8 @@ appnope = [
     {file = "appnope-0.1.0.tar.gz", hash = "sha256:8b995ffe925347a2138d7ac0fe77155e4311a0ea6d6da4f5128fe4b3cbe5ed71"},
 ]
 arrow = [
-    {file = "arrow-1.0.2-py3-none-any.whl", hash = "sha256:cb1b7bc3a07eb1c1e98ccc740627460c9891636642bcf03c4097b71d8bc5ca1d"},
-    {file = "arrow-1.0.2.tar.gz", hash = "sha256:5df8e632e9158c48f42f68a742068bcfc1c0181cbe7543e4cda6089bb287a305"},
+    {file = "arrow-1.0.3-py3-none-any.whl", hash = "sha256:3515630f11a15c61dcb4cdd245883270dd334c83f3e639824e65a4b79cc48543"},
+    {file = "arrow-1.0.3.tar.gz", hash = "sha256:399c9c8ae732270e1aa58ead835a79a40d7be8aa109c579898eb41029b5a231d"},
 ]
 backcall = [
     {file = "backcall-0.1.0.tar.gz", hash = "sha256:38ecd85be2c1e78f77fd91700c76e14667dc21e2713b63876c0eb901196e01e4"},
