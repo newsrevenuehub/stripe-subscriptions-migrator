@@ -3,7 +3,7 @@ FROM python:3.9.1
 WORKDIR /app
 COPY pyproject.toml poetry.lock /app/
 
-ENV POETRY_VERSION=1.1.4
+ENV POETRY_VERSION=1.1.8
 ENV PATH=/root/.poetry/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 RUN curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python \
    && poetry config virtualenvs.create false
