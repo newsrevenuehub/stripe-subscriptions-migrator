@@ -48,7 +48,7 @@ def add_email_to_stripe(stripe_customer_id, email):
         stripe.Customer.modify(stripe_customer_id, email=email)
         return
 
-    if customer.email != email:
+    if customer.email.lower() != email.lower():
         print(f"Exiting; WARNING: Stripe customer email doesn't match: {email} vs. {customer.email}")
         sys.exit(-1)
 
