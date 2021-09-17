@@ -1,4 +1,4 @@
-VERSION=v0.9.13
+VERSION=v0.9.14
 pull-and-run-image:
 	docker pull ghcr.io/newsrevenuehub/stripe-subscriptions-migrator:${VERSION}
 	docker tag ghcr.io/newsrevenuehub/stripe-subscriptions-migrator:${VERSION} stripe-subscriptions-migrator
