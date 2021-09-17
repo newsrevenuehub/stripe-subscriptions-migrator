@@ -16,6 +16,8 @@ SALESFORCE_API_VERSION=v48.0
 
 Then run `make`. This will drop you into a shell in the Docker container.
 
+First run `dos2unix subscriptions.csv`. This will remove/convert any DOS characters that may complicate the rest of the process.
+
 It's run as three scripts for safety.
 
 1. The first (`extract.py`) captures all of the subscriptions and saves them to a CSV. You can review that CSV to make sure it has exactly what you were hoping to get out of Stripe. So run `python extract.py`. That will produce a file called `subscriptions.csv`. Each time you run the script it will overwrite that CSV. This first script is non-destructive and can be run as many times as needed.
