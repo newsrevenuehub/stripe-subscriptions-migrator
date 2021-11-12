@@ -475,7 +475,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "stripe"
-version = "2.61.0"
+version = "2.62.0"
 description = "Python bindings for the Stripe API"
 category = "main"
 optional = false
@@ -824,8 +824,8 @@ six = [
     {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
 ]
 stripe = [
-    {file = "stripe-2.61.0-py2.py3-none-any.whl", hash = "sha256:5c6016362031a585d4f1138aff6e99c4c6d70b22b152b91fb6202d36bd8ac8c2"},
-    {file = "stripe-2.61.0.tar.gz", hash = "sha256:8131addd3512a22c4c539dda2d869a8f488e06f1b02d1f3a5f0f4848fc56184e"},
+    {file = "stripe-2.62.0-py2.py3-none-any.whl", hash = "sha256:026905a5732c28d42997e0bad774a07ca587e696a9b222738ededab3c3402250"},
+    {file = "stripe-2.62.0.tar.gz", hash = "sha256:1fb51d67a961ea889c5be324f020535ed511c6f483bd13a07f48f6e369fa8df0"},
 ]
 toml = [
     {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
