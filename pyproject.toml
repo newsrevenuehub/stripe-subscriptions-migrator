@@ -19,7 +19,7 @@ python-Levenshtein = "*"
 
 [tool.poetry.dev-dependencies]
 ipdb = "*"
-black = "^22.3"
+black = "^22.6"
 pre-commit = "*"
 
 [build-system]
