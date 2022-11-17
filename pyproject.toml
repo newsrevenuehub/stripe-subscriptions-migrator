@@ -9,7 +9,7 @@ line-length = 140
 
 [tool.poetry.dependencies]
 python = "^3.8"
-stripe = "^4"
+stripe = "^5"
 environs = "^9"
 pytz = "*"
 fuzzywuzzy = "*"
