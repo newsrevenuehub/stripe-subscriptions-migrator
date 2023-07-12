@@ -13,7 +13,7 @@ stripe = "^4"
 environs = "^9"
 pytz = "*"
 fuzzywuzzy = "*"
-pydantic = "*"
+pydantic = "^1"
 arrow = "*"
 python-Levenshtein = "*"
 
